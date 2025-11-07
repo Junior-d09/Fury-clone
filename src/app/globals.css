@@ -16,6 +16,12 @@
   }
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@700&family=Happy+Monkey&family=Orbitron:wght@700..900&display=swap');
+
+html {
+  font-family: 'Arima', sans-serif;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
