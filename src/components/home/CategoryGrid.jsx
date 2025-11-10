@@ -1,38 +1,96 @@
 'use client'
 
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { ArrowRightCircle } from 'lucide-react'
 
-const categories = [
-  { name: 'Musique', image: '/images/categories/music.jpg' },
-  { name: 'Gaming', image: '/images/categories/gaming.jpg' },
-  { name: 'Sport', image: '/images/categories/sport.jpg' },
-  { name: 'Accessoires', image: '/images/categories/accessories.jpg' },
+const demos = [
+  { id: 1, title: 'PORT–MUSIC', image: '/images/home-1.jpg' },
+  { id: 2, title: 'FURY–GAME', image: '/images/home-2.jpg' },
+  { id: 3, title: 'SPORTISTIC', image: '/images/home-3.jpg' },
+  { id: 4, title: 'LIST VIEW', image: '/images/list-view.jpg' },
+  { id: 5, title: 'GRID VIEW', image: '/images/short-view.jpg' },
+  { id: 6, title: 'SEARCH PAGE', image: '/images/search-page.jpg' },
+  { id: 7, title: 'LOGIN PAGE', image: '/images/login-page.jpg' },
+  { id: 8, title: 'QUICKVIEW PAGE', image: '/images/quickview-page.jpg' },
+  { id: 9, title: 'COMPARE PAGE', image: '/images/compare-page.jpg' },
+  { id: 10, title: 'PRODUCT TAB', image: '/images/product-tab.jpg' },
+  { id: 11, title: 'WISH LIST', image: '/images/produuct.jpg' },
+  { id: 12, title: 'CONTACT PAGE', image: '/images/wish-list.jpg' },
+  { id: 13, title: 'BLOG PAGE', image: '/images/blog-page.jpg' },
+  { id: 14, title: 'BLOG DETAILS PAGE', image: '/images/blog-details-page.jpg' },
+  { id: 15, title: 'MEGA MENU', image: '/images/mega-menu.jpg' },
+  { id: 16, title: 'EXTENDED PRODUCT', image: '/images/register-page.jpg' },
+  { id: 17, title: 'NEWSLETTER', image: '/images/Newsletter.jpg' },
+  { id: 18, title: 'ORDER–HISTORY', image: '/images/order-history.jpg' },
 ]
 
-export default function CategoryGrid() {
+const DemoSection = () => {
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold mb-8 text-center font-[var(--font-arima)]">
-          Nos Catégories
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {categories.map((cat) => (
-            <div key={cat.name} className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg">
-              <Image
-                src={cat.image}
-                alt={cat.name}
-                width={400}
-                height={300}
-                className="object-cover w-full h-64 group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <h3 className="text-white text-2xl font-semibold">{cat.name}</h3>
-              </div>
+    <section className="bg-[#0f0f0f] text-white py-20">
+      {/* Titre */}
+      <motion.h2
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-2xl md:text-3xl font-semibold text-center mb-16"
+      >
+        Explore Our Demos <span className="text-gray-400">(3 Demos)</span>
+      </motion.h2>
+
+      {/* Container principal */}
+      <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-6xl">
+        {demos.map((demo) => (
+          <motion.div
+            key={demo.id}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.4 }}
+            className="group relative overflow-hidden rounded-lg shadow-lg"
+          >
+            {/* Image */}
+            <Image
+              src={demo.image}
+              alt={demo.title}
+              width={500}
+              height={400}
+              className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
+            />
+
+            {/* Overlay sombre */}
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            {/* Icône flèche */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+              <ArrowRightCircle size={64} className="text-white drop-shadow-lg" />
             </div>
-          ))}
-        </div>
+
+            {/* Barre du bas animée */}
+            <div
+              className="
+                bg-white 
+                group-hover:bg-amber-400 
+                transition-colors 
+                duration-500 
+                py-4 
+                text-center
+              "
+            >
+              <p
+                className="
+                  text-lg 
+                  font-semibold 
+                  text-black 
+                  group-hover:text-black
+                "
+              >
+                {demo.title}
+              </p>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   )
 }
+
+export default DemoSection

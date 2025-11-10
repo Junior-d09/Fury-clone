@@ -1,27 +1,43 @@
 'use client'
-import Link from 'next/link'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 const Hero = () => {
- 
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-dark-900 via-primary-900 to-secondary-900 pt-20">
-      <div className="container-custom relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <span className="bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-semibold border border-white/20">
-                FURY - Responsive Prestashop Theme for eCommerce
-              </span>
-          <div className="flex items-center gap-3">
-                    <Image
-                      src="/images/hero-image.jpg"
-                      alt="Logo Fury"
-                     full
-                      priority
-                    />
-                  </div>
-        </div>
-      </div> 
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-[#0f0f0f] text-white overflow-hidden">
+      {/* Titre animé */}
+      <motion.h1
+        initial={{ opacity: 0, y: 80 }} // départ : invisible et en bas
+        animate={{ opacity: 1, y: 0 }}   // arrivée : visible et centré
+        transition={{
+          duration: 1,
+          ease: 'easeOut',
+        }}
+        className="text-2xl md:text-2xl font-semibold text-center mb-12"
+      >
+        FURY – Responsive Prestashop Theme for eCommerce
+      </motion.h1>
+
+      {/* Image principale */}
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{
+          delay: 0.3,
+          duration: 1,
+          ease: 'easeOut',
+        }}
+        className="relative w-full max-w-6xl px-4"
+      >
+       <Image
+  src="/images/hero-image-removebg-preview.png"
+  alt="FURY Theme Preview"
+  width={1500}
+  height={800}
+  priority
+  className="w-full h-auto rounded-xl shadow-2xl mx-auto mix-blend-lighten"
+/>
+      </motion.div>
     </section>
   )
 }
