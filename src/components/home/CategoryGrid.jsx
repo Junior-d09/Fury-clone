@@ -43,46 +43,35 @@ const DemoSection = () => {
         {demos.map((demo) => (
           <motion.div
             key={demo.id}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.4 }}
-            className="group relative overflow-hidden rounded-lg shadow-lg"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="group relative overflow-hidden rounded-lg shadow-lg bg-[#141414]"
           >
-            {/* Image */}
-            <Image
-              src={demo.image}
-              alt={demo.title}
-              width={500}
-              height={400}
-              className="w-full h-auto transition-transform duration-700 group-hover:scale-110"
-            />
+            {/* Conteneur image avec overflow hidden et hauteur fixe */}
+            <div className="relative overflow-hidden h-[350px]">
+              <div className="absolute inset-0 transition-transform duration-700 group-hover:-translate-y-6">
+                <Image
+                  src={demo.image}
+                  alt={demo.title}
+                  width={500}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
-            {/* Overlay sombre */}
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              {/* Overlay sombre */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
 
-            {/* Icône flèche */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
-              <ArrowRightCircle size={64} className="text-white drop-shadow-lg" />
+              {/* Icône flèche */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
+                <ArrowRightCircle size={64} className="text-white drop-shadow-lg" />
+              </div>
             </div>
 
-            {/* Barre du bas animée */}
-            <div
-              className="
-                bg-white 
-                group-hover:bg-amber-400 
-                transition-colors 
-                duration-500 
-                py-4 
-                text-center
-              "
-            >
-              <p
-                className="
-                  text-lg 
-                  font-semibold 
-                  text-black 
-                  group-hover:text-black
-                "
-              >
+            {/* Barre du bas fixe (en dehors du conteneur image) */}
+            <div className="bg-white group-hover:bg-amber-400 transition-colors duration-500 py-4 text-center">
+              <p className="text-lg font-semibold text-black">
                 {demo.title}
               </p>
             </div>

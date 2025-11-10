@@ -16,10 +16,15 @@
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Arima:wght@700&family=Happy+Monkey&family=Orbitron:wght@700..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Arima:wght@700&family=Happy+Monkey&family=Orbitron:wght@700..900&display=swap'); */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@700&family=Happy+Monkey&display=swap');
 
 html {
-  font-family: 'Arima', sans-serif;
+  /* font-family: 'Arima', sans-serif; */
+  font-family: 'Happy Monkey', cursive;
+  font-weight: 700;
 }
 
 body {
